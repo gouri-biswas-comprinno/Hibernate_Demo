@@ -19,6 +19,7 @@ public class Main {
         // hey hibernate save with a1 object
 
         Configuration config = new Configuration();
+        config.addAnnotatedClass(Alien.class);
         config.configure();
 
         SessionFactory factory = config.buildSessionFactory();
@@ -30,5 +31,8 @@ public class Main {
         session.persist(a1);
 
         transaction.commit();
+
+        session.close();
+        factory.close();
     }
 }
